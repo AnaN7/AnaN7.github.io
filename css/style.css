@@ -94,7 +94,7 @@ div {
 }
 
 body {
-    background-color: #dce8dc !important;
+    background-color: #f2f7f2 !important;
     margin-right: 8%;
     margin-left: 4%;
     padding-top: 70px;
@@ -146,7 +146,7 @@ body {
     left: 25px;
     height: 100%;
     width: 4px;
-    background: #dce8dc;
+    background: #f2f7f2;
 }
 
 @media only screen and (min-width: 1170px) {
@@ -198,7 +198,7 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    box-shadow: 0 0 0 4px #dce8dc, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 0 4px #f2f7f2, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 }
 
 .cd-timeline-img {
@@ -222,13 +222,13 @@ body {
     position: relative;
     margin-left: 60px;
     margin-right: 30px;
-    background: #dce8dc;
+    background: #f2f7f2;
     border-radius: 2px;
     padding: 1em;
 }
 
 .timeline-content-info {
-    background: #dce8dc;
+    background: #f2f7f2;
     padding: 5px 10px;
     color: white;
     font-size: 12px;
@@ -378,7 +378,7 @@ input[type=submit] {
 
 .container {
     border-radius: 5px;
-    background-color: #dce8dc;
+    background-color: #f2f7f2;
     padding: 20px;
 }
 
