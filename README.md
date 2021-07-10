@@ -1,2 +1,2 @@
-# AnaN7.github.io
+# ananovokmet.gitgub.io
  MHS projekt - imaginarni obrt VisuArt
