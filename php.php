@@ -22,39 +22,46 @@ header("location:hvala.html");
 
 
 <?php
-	if (isset($_POST["submit"])) {
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$message = $_POST['message'];
-		$from = 'Demo Contact Form'; 
-		$to = 'ana.novokmet@hotmail.com'; 
-		$subject = 'VisuArt - upit od klijenta';
-		
-		$body = "From: $name\n E-Mail: $email\n Message:\n $message";
 
-		// Check if name has been entered
-		if (!$_POST['name']) {
-			$errName = 'Please enter your name';
-		}
-		
-		// Check if email has been entered and is valid
-		if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-			$errEmail = 'Please enter a valid email address';
-		}
-		
-		//Check if message has been entered
-		if (!$_POST['message']) {
-			$errMessage = 'Please enter your message';
-		}
-		
+// configure
+$from = 'Demo contact form <demo@domain.com>';
+$sendTo = 'Demo contact form <demo@domain.com>';
+$subject = 'New message from contact form';
+$fields = array('name' => 'Name', 'surname' => 'Surname', 'phone' => 'Phone', 'email' => 'Email', 'message' => 'Message'); // array variable name => Text to appear in email
+$okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
+$errorMessage = 'There was an error while submitting the form. Please try again later';
 
-// If there are no errors, send the email
-if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
-	if (mail ($to, $subject, $body, $from)) {
-		$result='<div class="alert alert-success">Thank You! I will be in touch</div>';
-	} else {
-		$result='<div class="alert alert-danger">Sorry there was an error sending your message. Please try again later</div>';
-	}
+// let's do the sending
+
+try
+{
+    $emailText = "You have new message from contact form\n=============================\n";
+
+    foreach ($_POST as $key => $value) {
+
+        if (isset($fields[$key])) {
+            $emailText .= "$fields[$key]: $value\n";
+        }
+    }
+
+    mail($sendTo, $subject, $emailText, "From: " . $from);
+
+    $responseArray = array('type' => 'success', 'message' => $okMessage);
 }
-	}
-?> 
+catch (\Exception $e)
+{
+    $responseArray = array('type' => 'danger', 'message' => $errorMessage);
+}
+
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    $encoded = json_encode($responseArray);
+    
+    header('Content-Type: application/json');
+    
+    echo $encoded;
+}
+else {
+    echo $responseArray['message'];
+}
+
+?>
