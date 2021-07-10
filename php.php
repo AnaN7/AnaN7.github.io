@@ -5,8 +5,8 @@ $email = $_POST['email'];
 $message = $_POST['message'];
 
 
-$email_from = 'Panonia Camper - STRANICA';
-$email_subject = 'Nova poruka od korisnika';
+$email_from = 'VisuArt web sjedište';
+$email_subject = 'Nova poruka od klijenta';
 $email_body = "Ime i prezime: $name.\n"."Email: $email.\n"."Poruka: $message.\n";
 
 
